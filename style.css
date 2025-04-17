@@ -1,0 +1,62 @@
+.transition-width {
+    transition: width 0.3s ease;
+}
+
+.country-button.active {
+    background-color: #a9adb3;
+}
+
+.loading-dots::after {
+    content: '';
+    display: inline-block;
+    animation: dots 1.2s steps(3, end) infinite;
+}
+
+/* Webkit 기반 브라우저용 (Chrome, Edge, Safari 등) */
+#chatArea::-webkit-scrollbar, #country-wrapper::-webkit-scrollbar {
+    width: 1px;
+}
+
+#chatArea::-webkit-scrollbar-track, .country-wrapper::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 10px;
+}
+
+#chatArea::-webkit-scrollbar-thumb, .country-wrapper::-webkit-scrollbar-thumb {
+    background-color: #B7B7EF;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+#chatArea::-webkit-scrollbar-thumb:hover, .country-wrapper::-webkit-scrollbar-thumb:hover {
+    background-color: #9a9aec;
+}
+
+/* Firefox */
+#chatArea, .country-wrapper {
+    scrollbar-width: thin;
+    scrollbar-color: #B7B7EF #f0f0f0;
+}
+
+@keyframes dots {
+    0% {
+        content: '';
+    }
+
+    25% {
+        content: '.';
+    }
+
+    50% {
+        content: '..';
+    }
+
+    75% {
+        content: '...';
+    }
+
+    100% {
+        content: '....';
+    }
+}
