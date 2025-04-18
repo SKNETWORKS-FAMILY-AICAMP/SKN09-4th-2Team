@@ -91,11 +91,8 @@
 <br>
 
 ## 6. 요구사항 명세서
-![Require_doc](https://github.com/user-attachments/assets/35ccdaeb-fc3c-4ad3-a78b-8f264b14480a)
+![image](https://github.com/user-attachments/assets/d8fb7f42-51d5-4942-8d54-0e758e803219)
 
-<br>
-
-![function_doc](https://github.com/user-attachments/assets/15f5ebaf-f6dd-4711-bc27-175fe6e83ef0)
 
 <br>
 
