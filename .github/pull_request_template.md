@@ -1,12 +1,3 @@
----
-name: PR template
-about: 이슈 관련한 merge 요청
-title: "[Pull Request]"
-labels: PR
-assignees: ''
-
----
-
 ## 📌 PR 제목
 <!-- ex: [FIX] 로그인 오류 수정 -->
 
