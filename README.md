@@ -1,4 +1,4 @@
-# [SKN09-3rd-2Team]
+# [SKN09-4rd-2Team]
 ✅ SKN AI FAMILY CAMP 9기<br>
 
 
@@ -7,17 +7,14 @@
 
 1. [팀 소개](#%EF%B8%8Fteam-introduce)
 2. [프로젝트 개요](#project-overview)
-3. [기술 스택 & 사용한 모델 (임베딩 모델, LLM)](#3-기술-스택--사용한-모델-임베딩-모델-llm)
-4. [시스템 아키텍처](#4-시스템-아키텍처)
-5. [WBS](#5-wbs)
-6. [요구사항 명세서](#6-요구사항-명세서)
-7. [수집한 데이터 및 전처리 요약](#7-수집한-데이터-및-전처리-요약)
-8. [DB 연동 구현 코드 (링크만)](#8-db-연동-구현-코드-링크만)
-9. [테스트 계획 및 결과 보고서](#9-테스트-계획-및-결과-보고서)
-10. [진행 과정 중 프로그램 개선 노력](#10-진행-과정-중-프로그램-개선-노력)
-11. [수행결과(테스트/시연 페이지)](#11-수행결과테스트시연-페이지)
-12. [한 줄 회고](#한-줄-회고)
-
+3. [기술 스택](#3-기술-스택--사용한-모델-임베딩-모델-llm)
+4. [시스템 구성도](#4-시스템-아키텍처)
+5. [요구사항 정의서](#5-wbs)
+6. [화면설계서](#6-요구사항-명세서)
+7. [WBS](#7-수집한-데이터-및-전처리-요약)
+8. [테스트 계획 및 결과 보고서](#8-db-연동-구현-코드-링크만)
+9. [수행결과](#9-테스트-계획-및-결과-보고서)
+10. [한 줄 회고](#10-진행-과정-중-프로그램-개선-노력)
 
 ---
 
@@ -32,7 +29,7 @@
 ---
 
 # 🎼Project Overview
-✅ **프로젝트 기간: 2025.03.28 - 2025. 03.31**
+✅ **프로젝트 기간: 2025.04.21 - 2025. 04.22**
 
 ## 1. 프로젝트 주제
 #### ✈️ 여행 정보 챗봇 시스템
@@ -61,14 +58,12 @@
 
 <br><br>
 
-## 3. 기술 스택 & 사용한 모델 (임베딩 모델, LLM)
-### 🧰 기술 스택 및 사용한 모델
-
+## 3. 기술 스택
 - 개발 언어:  ![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white)
 - 개발 환경: ![VS Code](https://img.shields.io/badge/-VS%20Code-007ACC?logo=visualstudiocode&logoColor=white) ![Colab](https://img.shields.io/badge/-Google%20Colab-F9AB00?logo=googlecolab&logoColor=white) ![RunPod](https://img.shields.io/badge/-RunPod-5F43DC?logo=cloud&logoColor=white)
 - VectorDB :  ![ChromaDB](https://img.shields.io/badge/ChromaDB-white)
 - LLM : ![Gemma](https://img.shields.io/badge/-Gemma-4285F4?logo=google&logoColor=white)
-- 프레임워크 : <img src='https://img.shields.io/badge/%F0%9F%A4%97%20HF_transformer%20-yellow'> ![Gradio](https://img.shields.io/badge/Gradio-orange)
+- 프레임워크 : <img src='https://img.shields.io/badge/%F0%9F%A4%97%20HF_transformer%20-yellow'>
 - 협업 툴 : ![GitHub](https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white)
 
 #### 베이스 모델 선정 이유
@@ -80,12 +75,12 @@
 
 <br>
 
-## 4. 시스템 아키텍처
+## 4. 시스템 구성도
 <img width="1109" alt="스크린샷 2025-03-31 오전 2 17 05" src="https://github.com/user-attachments/assets/f18584ec-0c51-40ec-aa80-6e29a4d1749f" />
 
 <br><br>
 
-## 5. 요구사항 명세서
+## 5. 요구사항 정의서
 ![image](https://github.com/user-attachments/assets/d8fb7f42-51d5-4942-8d54-0e758e803219)
 
 <br><br>
