@@ -1,0 +1,210 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Checker</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 h-screen overflow-hidden">
+  <div class="flex h-full">
+
+    <!-- 사이드바 -->
+    <div id="sidebar"
+      class="select-none bg-[#343949] transition-width duration-300 w-64 p-4 shadow-lg relative my-4 rounded mx-2">
+      <!-- ☰ 버튼은 항상 상단에 고정 -->
+      <button onclick="toggleSidebar()"
+        class="bg-[#343949] absolute top-5 left-4 text-xl text-white border px-2 py-1 rounded mx-3 my-2">☰</button>
+
+      <!-- 사이드바 내부 -->
+      <div id="sidebarContent" class="border p-2 rounded">
+        <!-- 새채팅 -->
+        <br>
+        <br>
+        <button
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          onclick="location.reload();">
+          💬 새채팅
+        </button>
+
+        <!-- 국가 선택 -->
+         <div id="country-wrapper" class="overflow-y-auto max-h-[75vh]">
+          <button
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          onclick="selectCountry(this, '대한민국')">
+          🇰🇷 대한민국
+        </button>
+
+        <button
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          onclick="selectCountry(this, '베트남')">
+          🇻🇳 베트남
+        </button>
+
+        <button
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          onclick="selectCountry(this, '홍콩')">
+          🇭🇰 홍콩
+        </button>
+
+        <button
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          onclick="selectCountry(this, '일본')">
+          🇯🇵 일본
+        </button>
+
+        <button
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          onclick="selectCountry(this, '미국')">
+          🇺🇸 미국
+        </button>
+        <!-- 중국 -->
+        <button
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          onclick="selectCountry(this, '중국')">
+          🇨🇳 중국
+        </button>
+
+        <!-- 인도네시아 -->
+        <button
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          onclick="selectCountry(this, '인도네시아')">
+          🇮🇩 인도네시아
+        </button>
+
+        <!-- 말레이시아 -->
+        <button
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          onclick="selectCountry(this, '말레이시아')">
+          🇲🇾 말레이시아
+        </button>
+
+        <!-- 필리핀 -->
+        <button
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          onclick="selectCountry(this, '필리핀')">
+          🇵🇭 필리핀
+        </button>
+        <!-- 싱가포르 -->
+        <button
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          onclick="selectCountry(this, '싱가포르')">
+          🇸🇬 싱가포르
+        </button>
+
+        <!-- 대만 -->
+        <button
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          onclick="selectCountry(this, '대만')">
+          🇹🇼 대만
+        </button>
+        </div>
+
+        <div class="mt-4 flex space-x-2 justify-around">
+          <!-- 불러오기 -->
+          <label
+            class="flex items-center gap-x-1 bg-gray-400 text-white px-2 py-2 rounded cursor-pointer hover:bg-gray-500">
+            <span class="text-lg">＋</span>
+            <span>불러오기</span>
+            <input type="file" id="fileInput" accept=".json,.txt" class="hidden">
+          </label>
+
+          <!-- 내보내기 -->
+          <button onclick="showExportModal()"
+            class="flex items-center gap-x-1 bg-gray-400 text-white px-2 py-2 rounded hover:bg-gray-500">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M19 21H5a2 2 0 01-2-2V7a2 2 0 012-2h4l2-2h2l2 2h4a2 2 0 012 2v12a2 2 0 01-2 2z" />
+            </svg>
+            <span>내보내기</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 메인 콘텐츠 -->
+    <div id="mainContent" class="flex-1 p-4 transition-all duration-300">
+      <!-- 채팅 영역 -->
+      <div class="relative h-[70%] border rounded bg-white mb-4 p-2 flex flex-col justify-end">
+        <header class="absolute left-1/2 -translate-x-1/2 text-center text-[#B7B7EF] top-4">
+          <h1 class="text-6xl font-bold select-none">travel checker</h1>
+        </header>
+        <!-- 아래에서부터 차오르는 채팅 -->
+        <div id="chatArea" class="container flex flex-col overflow-y-auto" style="z-index: 2;">
+          <div class="question text-right m-5 ">
+            <div class="inline-block bg-gray-200 rounded p-2 max-w-[80%]">
+              대만 명소 추천해줘
+            </div>
+          </div>
+          <div class="answer text-left m-5">
+            <div class="inline-block bg-gray-300 rounded p-2 max-w-[80%]">
+              기본적으로 가져가면 안될 것들은 향기빔, 흙기빔 등입니다.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 질문 입력창 -->
+      <!-- 선택된 국가 (검색창 위로 이동) -->
+      <div id="selectedCountry" class="select-none text-lg font-semibold text-yellow-700 mb-2">국가를 선택해주세요</div>
+      <div class="relative mb-2">
+        <!-- 파일 첨부 버튼 (오른쪽 안) -->
+        <label for="fileInput"
+          class="absolute top-1/2 right-14 -translate-y-1/2 text-gray-500 cursor-pointer hover:text-gray-700">
+          📎
+        </label>
+        <input type="file" id="fileInput" accept=".json,.txt" class="hidden">
+
+        <!-- 전송 버튼 (오른쪽 끝) -->
+        <button onclick="addQuestion()"
+          class="select-none absolute top-1/2 right-2 -translate-y-1/2 bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
+          ➤
+        </button>
+
+        <!-- 입력창 -->
+        <input id="questionInput" maxlength="500" class="select-none w-full pr-20 p-2 border rounded"
+          placeholder="500자 이내로 작성해 주세요.">
+      </div>
+
+      <!-- 추천 질문 -->
+      <div class="select-none space-x-2">
+        <button onclick="insertSuggested()" class="bg-gray-300 px-3 py-1 rounded">여행지 추천해 주세요</button>
+        <button onclick="insertSuggested()" class="bg-gray-300 px-3 py-1 rounded">베트남 수도의 맛집 추천해주세요</button>
+        <button onclick="insertSuggested()" class="bg-gray-300 px-3 py-1 rounded">베트남에서 조심해야할 에티켓은 무엇인가요?</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 오버레이 -->
+  <div id="overlay" class="hidden fixed inset-0 bg-black bg-opacity-30 z-10" onclick="hideExportModal()"></div>
+  <!-- 모달 -->
+  <div id="exportModal"
+    class="hidden fixed top-1/3 left-1/2 transform -translate-x-1/2 z-20 bg-[#f7f6fb] p-6 rounded-xl shadow-lg w-72 text-center">
+
+    <!-- 닫기 버튼 -->
+    <button onclick="hideExportModal()" class="absolute top-3 right-4 text-3xl text-gray-600 hover:text-black">
+      &times;
+    </button>
+
+    <!-- 본문 텍스트 -->
+    <p class="mb-6 font-medium text-black">
+      지금까지 나눈 대화를<br>내보내시겠습니까?
+    </p>
+
+    <!-- 선택 버튼 -->
+    <div class="flex justify-around">
+      <button onclick="exportChat('json')" class="text-blue-500 hover:text-blue-600 font-medium">Json</button>
+      <button onclick="exportChat('txt')" class="text-blue-500 hover:text-blue-600 font-medium">Text</button>
+    </div>
+  </div>
+
+  <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>
