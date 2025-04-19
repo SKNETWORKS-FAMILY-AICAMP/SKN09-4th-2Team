@@ -78,6 +78,14 @@ WSGI_APPLICATION = "travel_checker.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# db 연동시 셋팅 방법 (연동 안해서 일단 주석 처리 )
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
