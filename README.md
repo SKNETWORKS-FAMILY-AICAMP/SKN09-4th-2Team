@@ -76,7 +76,7 @@
 <br>
 
 ## 4. 시스템 구성도
-<img width="1109" alt="스크린샷 2025-03-31 오전 2 17 05" src="https://github.com/user-attachments/assets/f18584ec-0c51-40ec-aa80-6e29a4d1749f" />
+![image](https://github.com/user-attachments/assets/213f8bda-27d7-4219-a886-068f21b73903)
 
 <br><br>
 
