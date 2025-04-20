@@ -166,6 +166,7 @@ function insertSuggested() {
   const suggestedText = event.target.textContent;
   questionInput.value = suggestedText;
   questionInput.focus();
+  addQuestion();
 }
 
 // 내보내기 모달 표시
