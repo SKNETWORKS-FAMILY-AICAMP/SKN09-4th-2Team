@@ -92,20 +92,56 @@ function hideExportModal() {
     document.getElementById('exportModal').classList.add('hidden');
 }
 
+// function exportChat(type) {
+//     const chatItems = document.querySelectorAll('#chatArea .question, #chatArea .answer');
+//     let text = '';
+//     chatItems.forEach(el => {
+//         text += el.classList.contains('question') ? 'Q: ' : 'A: ';
+//         text += el.textContent + '\n';
+//     });
+//     const blob = new Blob([text], { type: type === 'json' ? 'application/json' : 'text/plain' });
+//     const link = document.createElement('a');
+//     link.href = URL.createObjectURL(blob);
+//     link.download = `chat.${type}`;
+//     link.click();
+//     hideExportModal();
+// }
+
 function exportChat(type) {
     const chatItems = document.querySelectorAll('#chatArea .question, #chatArea .answer');
-    let text = '';
-    chatItems.forEach(el => {
-        text += el.classList.contains('question') ? 'Q: ' : 'A: ';
-        text += el.textContent + '\n';
-    });
-    const blob = new Blob([text], { type: type === 'json' ? 'application/json' : 'text/plain' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = `chat.${type}`;
-    link.click();
+
+    if (type === 'json') {
+        const messages = [];
+        chatItems.forEach(el => {
+            messages.push({
+                role: el.classList.contains('question') ? 'user' : 'assistant',
+                message: el.textContent.trim()
+            });
+        });
+        const json = JSON.stringify(messages, null, 2); // 보기 좋은 들여쓰기
+        const blob = new Blob([json], { type: 'application/json' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'chat.json';
+        link.click();
+    } else {
+        let text = '';
+        chatItems.forEach(el => {
+            text += el.classList.contains('question') ? 'Q: ' : 'A: ';
+            text += el.textContent.trim() + '\n';
+        });
+        const blob = new Blob([text], { type: 'text/plain' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'chat.txt';
+        link.click();
+    }
+
     hideExportModal();
 }
+
+
+
 
 // 불러오기 기능
 document.getElementById('fileInput').addEventListener('change', function (e) {
