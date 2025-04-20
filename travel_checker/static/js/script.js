@@ -181,9 +181,35 @@ function hideExportModal() {
 }
 
 // 채팅 내보내기
-function exportChat(format) {
-  if (chatHistory.length === 0) {
-    alert('내보낼 대화 내용이 없습니다.');
+function exportChat(type) {
+    const chatItems = document.querySelectorAll('#chatArea .question, #chatArea .answer');
+
+    if (type === 'json') {
+        const messages = [];
+        chatItems.forEach(el => {
+            messages.push({
+                role: el.classList.contains('question') ? 'user' : 'assistant',
+                message: el.textContent.trim()
+            });
+        });
+        const json = JSON.stringify(messages, null, 2); // 보기 좋은 들여쓰기
+        const blob = new Blob([json], { type: 'application/json' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'chat.json';
+        link.click();
+    } else {
+        let text = '';
+        chatItems.forEach(el => {
+            text += el.classList.contains('question') ? 'Q: ' : 'A: ';
+            text += el.textContent.trim() + '\n';
+        });
+        const blob = new Blob([text], { type: 'text/plain' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'chat.txt';
+        link.click();
+    }
     hideExportModal();
     return;
   }
