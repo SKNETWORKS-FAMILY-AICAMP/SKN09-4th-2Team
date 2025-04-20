@@ -210,42 +210,8 @@ function exportChat(type) {
         link.download = 'chat.txt';
         link.click();
     }
+
     hideExportModal();
-    return;
-  }
-  
-  let content = '';
-  let filename = `travel_checker_chat_${new Date().toISOString().slice(0,10)}`;
-  
-  if (format === 'json') {
-    content = JSON.stringify({
-      country: selectedCountry,
-      timestamp: new Date().toISOString(),
-      messages: chatHistory
-    }, null, 2);
-    filename += '.json';
-  } else {
-    content = `국가: ${selectedCountry}\n날짜: ${new Date().toLocaleString()}\n\n`;
-    
-    chatHistory.forEach(msg => {
-      content += `${msg.role === 'user' ? '사용자' : '어시스턴트'}: ${msg.content}\n\n`;
-    });
-    
-    filename += '.txt';
-  }
-  
-  // 파일 다운로드
-  const blob = new Blob([content], { type: format === 'json' ? 'application/json' : 'text/plain' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  
-  hideExportModal();
 }
 
 // 파일 업로드 처리
