@@ -11,11 +11,14 @@ function toggleSidebar() {
         sidebarContent.style.display = 'none';
         event.target.classList.remove('mx-3')
         sidebar.classList.add('h-[10%]')
+        sidebar.classList.add('bg-transparent')
     } else {
         sidebar.classList.replace('w-16', 'w-64');
         sidebarContent.style.display = 'block';
         event.target.classList.add('mx-3')
         sidebar.classList.remove('h-[10%]')
+        sidebar.classList.remove('bg-transparent')
+
     }
 }
 
@@ -108,7 +111,7 @@ function exportChat(type) {
 }
 
 // 불러오기 기능
-document.getElementById('fileInput').addEventListener('change', function (e) {
+function textExport(e) {
     const file = e.target.files[0];
     if (!file) return;
     const reader = new FileReader();
@@ -129,4 +132,7 @@ document.getElementById('fileInput').addEventListener('change', function (e) {
         });
     };
     reader.readAsText(file);
-});
+}
+
+document.getElementById('fileInput').addEventListener('change', textExport);
+document.getElementById('fileInput1').addEventListener('change', textExport);
