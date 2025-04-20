@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost","43.200.181.58"]
+ALLOWED_HOSTS = ["localhost","43.200.181.58", "127.0.0.1"]
 # ALLOWED_HOSTS = ["localhost"]
 
 
@@ -155,8 +155,14 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 #   },
 # }
 
-# AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-# AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-# AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
-# AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME', 'ap-northeast-2')
-# AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME', 'ap-northeast-2')
+# SAGEMAKER_ENDPOINT_NAME=your-sagemaker-endpoint-name
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+
+# CSRF 설정
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = False  # JavaScript에서 접근 가능하게
+CSRF_USE_SESSIONS = True
