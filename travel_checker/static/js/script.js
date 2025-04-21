@@ -314,7 +314,7 @@ function exportChat(type) {
     const chatItems = document.querySelectorAll('#chatArea .question, #chatArea .answer');
     if (type === 'json') {
         const data = {
-            "country": selectedCountry,
+            "country": selectedCountryName,
             "messages": []
         }
         const messages = [];
@@ -332,7 +332,7 @@ function exportChat(type) {
         link.download = 'chat.json';
         link.click();
     } else {
-        let text = `Country: ${selectedCountry}\n`;
+        let text = `Country: ${selectedCountryName}\n`;
         chatItems.forEach(el => {
             text += el.classList.contains('question') ? 'Q: ' : 'A: ';
             text += el.textContent.trim() + '\n';
@@ -374,6 +374,7 @@ function handleFileUpload(event) {
             
             // 대화 내용 복원
             chatHistory = data.messages;
+            console.log(chatHistory);
             
             // 대화 표시
             data.messages.forEach(msg => {
@@ -468,11 +469,11 @@ function insertWelcomeMessage(countryName) {  // ✅ 추가
 }
 
 function startNewChat() {  // ✅ 추가
+  chatArea.innerHTML = "";  // 채팅 영역 초기화
   selectedCountryName = "";
   document.getElementById("selectedCountry").textContent = "국가를 선택해주세요";
   document.querySelectorAll(".country-button").forEach(btn => btn.classList.remove("active"));
   insertWelcomeMessage("여행 및 나라");
-
   showInputSection();  // ✅ 이 줄 추가
 }
 
