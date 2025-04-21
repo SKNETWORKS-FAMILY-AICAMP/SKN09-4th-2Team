@@ -9,7 +9,7 @@
   <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <script src="https://cdn.tailwindcss.com"></script>
-</head>
+</head>z
 
 <body class="bg-gray-100 h-screen overflow-hidden">
   <div class="flex h-full">
@@ -195,17 +195,90 @@
 
     <!-- 본문 텍스트 -->
     <p class="mb-6 font-medium text-black">
-      지금까지 나눈 대화를<br>내보내시겠습니까?
+      지금까지 나눈 대화를<br>내보내시겠습니까?         {% comment %} 다른 나라 클릭 시, Modal 생성 {% endcomment %}
     </p>
 
     <!-- 선택 버튼 -->
     <div class="flex justify-around">
-      <button onclick="exportChat('json')" class="text-blue-500 hover:text-blue-600 font-medium">Json</button>
-      <button onclick="exportChat('txt')" class="text-blue-500 hover:text-blue-600 font-medium">Text</button>
+
+      <button class="export-json text-blue-500 hover:text-blue-600 font-medium">Json</button>
+      <button class="export-text text-blue-500 hover:text-blue-600 font-medium">Text</button>
+      <button class="export-skip text-yellow-500 hover:text-yellow-600 font-medium">Skip</button>     {% comment %} Skip 버튼 추가 {% endcomment %}
+      
     </div>
   </div>
 
   <script src="{% static 'js/script.js' %}"></script>
+
+
+  {% comment %} 25_04_20(일) Testing.. {% endcomment %}
+  {% comment %} <script>
+    let selectCountryName ="";
+
+    function selectCountry(button, CountryName){
+      selectCountryName = CountryName;
+      document.getElementById("selectedCountry").innerText = CountryName;
+    }
+
+    function addQuestion() {
+      const input = document.getElementById("questionInput");
+      const chatArea = document.getElementById("chatArea");
+      const question = input.value.trim();
+      const country = selectCountryName;
+  
+      if (!question || !country) {
+        alert("질문과 국가를 모두 입력해주세요.");
+        return;
+      }
+  
+      const userDiv = document.createElement("div");
+      userDiv.className = "question text-right m-5";
+      userDiv.innerHTML = `<div class="inline-block bg-gray-200 rounded p-2 max-w-[80%]">${question}</div>`;
+      chatArea.appendChild(userDiv);
+      input.value = "";
+  
+      fetch("/api/chat/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user_message: question,
+          country: country,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          const answer = data.answer;
+          const botDiv = document.createElement("div");
+          botDiv.className = "answer text-left m-5";
+          botDiv.innerHTML = `<div class="inline-block bg-gray-300 rounded p-2 max-w-[80%]">${answer}</div>`;
+          chatArea.appendChild(botDiv);
+          chatArea.scrollTop = chatArea.scrollHeight;
+        })
+        .catch((err) => {
+          console.error("에러 발생:", err);
+        });
+    }
+  
+    // 엔터키 전송 처리
+    document.getElementById("questionInput").addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        addQuestion();
+      }
+    });
+  
+    // 추천 질문 버튼 텍스트 삽입
+    function insertSuggested() {
+      const text = event.target.innerText;
+      document.getElementById("questionInput").value = text;
+    }
+  </script> {% endcomment %}
+  
+  {% comment %} 25_04_20(일) Testing.. {% endcomment %}
+
+
 </body>
 
 </html>
