@@ -38,6 +38,7 @@ function selectCountry(button, newCountryName) {
     } else {
         applyNewCountry(button, newCountryName);                                        // 처음 선택이거나 채팅 없으면 그냥 국가 변경
     }
+    getRecommendQuestions();
 }
 
 function applyNewCountry(button, countryName) {
@@ -420,13 +421,12 @@ function handleFileUpload(event) {
         }
       }
     }
+    return cookieValue;
   }
-  return cookieValue;
-}
 
 // 추천 질문 가져오기
 function getRecommendQuestions(){
-    fetch(`api/question/recommend?country=${selectedCountry}`, headers = {
+    fetch(`api/question/recommend?country=${selectedCountryName}`, headers = {
         'Content-Type': 'application/json',
       })
       .then(response => response.json())
