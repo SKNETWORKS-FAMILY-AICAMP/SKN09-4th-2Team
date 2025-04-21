@@ -76,3 +76,18 @@
     align-items: center;
     gap: 2px;
 }
+
+#sidebar .country-button {
+    display: flex;
+    padding: 0.5rem .75rem;
+}
+
+#sidebar .collapsed .country-button {
+    justify-content: center;
+}
+
+
+#sidebar .collapsed img {
+    max-width: none;
+    height: auto;
+}

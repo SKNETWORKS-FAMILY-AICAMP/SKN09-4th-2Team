@@ -15,7 +15,7 @@
   <div class="flex h-full">
     <!-- ☰ 버튼은 항상 상단에 고정 -->
     <button onclick="toggleSidebar()"
-      class="bg-[#343949] fixed top-9 left-5 text-xl text-white border px-2 py-1 rounded mx-3 my-2" style="z-index:999;">☰</button>
+      class="bg-[#343949] fixed top-9 left-[18px] text-xl text-white border px-2 py-1 rounded mx-3 my-2" style="z-index:999;">☰</button>
     <!-- 사이드바 -->
     <div id="sidebar"
       class="select-none bg-[#343949] transition-width duration-300 w-64 p-4 relative my-4 rounded">
@@ -27,81 +27,89 @@
         <button
           {% comment %} class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
           onclick="location.reload();"> {% endcomment %}
-          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
           onclick="startNewChat();">
-          💬 <span class="tag">새채팅</span>
+          💬 <span class="tag whitespace-nowrap">&nbsp; 새채팅</span>
         </button>
-
         <!-- 국가 선택 -->
          <div id="country-wrapper" class="overflow-y-auto max-h-[75vh]">
           <button
-          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
           onclick="selectCountry(this, '대한민국')">
-          🇰🇷 <span class="tag">대한민국</span>
+          <img width="24" height="24" src="https://img.icons8.com/color/48/south-korea.png" alt="south-korea"/>
+          <span class="tag whitespace-nowrap">대한민국</span>
         </button>
 
         <button
-          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
           onclick="selectCountry(this, '베트남')">
-          🇻🇳 <span class="tag">베트남</span>
+          <img width="24" height="24" src="https://img.icons8.com/color/48/vietnam.png" alt="vietnam"/>
+          <span class="tag whitespace-nowrap">베트남</span>
         </button>
 
         <button
-          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
           onclick="selectCountry(this, '홍콩')">
-          🇭🇰 <span class="tag">홍콩</span>
+          <img width="24" height="24" src="https://img.icons8.com/color/48/hongkong-flag.png" alt="hongkong-flag"/>
+          <span class="tag whitespace-nowrap">홍콩</span>
         </button>
 
         <button
-          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
           onclick="selectCountry(this, '일본')">
-          🇯🇵 <span class="tag">일본</span>
+          <img width="24" height="24" src="https://img.icons8.com/color/48/japan.png" alt="japan"/> 
+          <span class="tag whitespace-nowrap">일본</span>
         </button>
 
         <button
-          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
           onclick="selectCountry(this, '미국')">
-          🇺🇸 <span class="tag">미국</span>
+          <img width="24" height="24" src="https://img.icons8.com/color/48/usa.png" alt="usa"/>
+          <span class="tag whitespace-nowrap">미국</span>
         </button>
         <!-- 중국 -->
         <button
-          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
           onclick="selectCountry(this, '중국')">
-          🇨🇳 <span class="tag">중국</span>
+          <img width="24" height="24" src="https://img.icons8.com/color/48/china.png" alt="china"/> <span class="tag whitespace-nowrap">중국</span>
         </button>
 
         <!-- 인도네시아 -->
         <button
-          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
           onclick="selectCountry(this, '인도네시아')">
-          🇮🇩 <span class="tag">인도네시아</span>
+          <img width="24" height="24" src="https://img.icons8.com/color/48/indonesia.png" alt="indonesia"/>
+          <span class="tag whitespace-nowrap">인도네시아</span>
         </button>
 
         <!-- 말레이시아 -->
         <button
-          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
           onclick="selectCountry(this, '말레이시아')">
-          🇲🇾 <span class="tag">말레이시아</span>
+          <img width="24" height="24" src="https://img.icons8.com/color/48/malaysia.png" alt="malaysia"/>
+          <span class="tag whitespace-nowrap">말레이시아</span>
         </button>
 
         <!-- 필리핀 -->
         <button
-          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
           onclick="selectCountry(this, '필리핀')">
-          🇵🇭 <span class="tag">필리핀</span>
+          <img width="24" height="24" src="https://img.icons8.com/color/48/philippines.png" alt="philippines"/>
+          <span class="tag whitespace-nowrap">필리핀</span>
         </button>
         <!-- 싱가포르 -->
         <button
-          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
           onclick="selectCountry(this, '싱가포르')">
-          🇸🇬 <span class="tag">싱가포르</span>
+          <img width="24" height="24" src="https://img.icons8.com/color/48/singapore.png" alt="singapore"/>
+          <span class="tag whitespace-nowrap">싱가포르</span>
         </button>
 
         <!-- 대만 -->
         <button
-          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
           onclick="selectCountry(this, '대만')">
-          🇹🇼 <span class="tag">대만</span>
+          <img width="24" height="24" src="https://img.icons8.com/color/48/taiwan.png" alt="taiwan"/> <span class="tag whitespace-nowrap">대만</span>
         </button>
         </div>
 
@@ -114,7 +122,7 @@
             stroke="currentColor" class="w-5 h-5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
           </svg>
-          <span class="tag">불러오기</span>
+          <span class="tag whitespace-nowrap">불러오기</span>
           </button>
           <input type="file" id="fileInput1" accept=".json,.txt" class="hidden">
           <!-- 내보내기 -->
@@ -125,7 +133,7 @@
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M19 21H5a2 2 0 01-2-2V7a2 2 0 012-2h4l2-2h2l2 2h4a2 2 0 012 2v12a2 2 0 01-2 2z" />
             </svg>
-            <span class="tag">내보내기</span>
+            <span class="tag whitespace-nowrap">내보내기</span>
           </button>
         </div>
       </div>
@@ -154,35 +162,31 @@
       </div>
 
       <!-- 질문 입력창 -->
-       <!-- ✅ 입력 영역 전체를 감싸는 div 추가 -->
+      <!-- ✅ 입력 영역 전체를 감싸는 div 추가 -->
       <div id="inputWrapper" class="mt-4"> <!-- ← 이 줄 추가 -->
-        <!-- 선택된 국가 (검색창 위로 이동) -->
-        <div id="selectedCountry" class="select-none text-lg font-semibold text-yellow-700 mb-2">국가를 선택해주세요</div>
-        <!-- 입력창 -->
-        <div class="relative mb-2">
-          <!-- 파일 첨부 버튼 (오른쪽 안) -->
-          <label for="fileInput"
-            class="absolute top-1/2 right-14 -translate-y-1/2 text-gray-500 cursor-pointer hover:text-gray-700">
-            📎
-          </label>
-          <input type="file" id="fileInput" accept=".json,.txt" class="hidden">
-
+      <!-- (검색창 위로 이동) -->
+      <div id="selectedCountry" class="select-none text-lg font-semibold text-yellow-700 mb-2">국가를 선택해주세요</div>
+      <div class="relative mb-2">
+        <!-- 파일 첨부 버튼 (오른쪽 안) -->
+        <label for="fileInput"
+          class="absolute top-1/2 right-14 -translate-y-1/2 text-gray-500 cursor-pointer hover:text-gray-700">
+          <img width="24" height="24" src="https://img.icons8.com/forma-light-filled/24/attach.png" alt="attach"/>
+        </label>
           <!-- 전송 버튼 (오른쪽 끝) -->
           <button onclick="addQuestion()"
             class="select-none absolute top-1/2 right-2 -translate-y-1/2 bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
             ➤
           </button>
-
+          <!-- 입력창 -->
+          <input type="file" id="fileInput" accept=".json,.txt" class="hidden">
           <input id="questionInput" maxlength="500" class="select-none w-full pr-20 p-2 border rounded"
             placeholder="500자 이내로 작성해 주세요.">
         </div>
-
-        <!-- 추천 질문 -->
-        <div id="recommendQuestion" class="select-none space-x-2">
-          <button onclick="insertSuggested()" class="bg-gray-300 px-3 py-1 rounded">여행지 추천해 주세요</button>
-          <button onclick="insertSuggested()" class="bg-gray-300 px-3 py-1 rounded">베트남 수도의 맛집 추천해주세요</button>
-          <button onclick="insertSuggested()" class="bg-gray-300 px-3 py-1 rounded">베트남에서 조심해야할 에티켓은 무엇인가요?</button>
-        </div>
+      <!-- 추천 질문 -->
+      <div id="recommendQuestion" class="select-none space-x-2">
+        <button onclick="insertSuggested()" class="bg-gray-300 px-3 py-1 mb-2 rounded">여행지 추천해 주세요</button>
+        <button onclick="insertSuggested()" class="bg-gray-300 px-3 py-1 mb-2 rounded">베트남 수도의 맛집 추천해주세요</button>
+        <button onclick="insertSuggested()" class="bg-gray-300 px-3 py-1 mb-2 rounded">베트남에서 조심해야할 에티켓은 무엇인가요?</button>
       </div>
     </div>
   </div>
@@ -205,92 +209,14 @@
 
     <!-- 선택 버튼 -->
     <div class="flex justify-around">
-
       <button class="export-json text-blue-500 hover:text-blue-600 font-medium">Json</button>
       <button class="export-text text-blue-500 hover:text-blue-600 font-medium">Text</button>
-      <button class="export-skip text-yellow-500 hover:text-yellow-600 font-medium">Skip</button>     {% comment %} Skip 버튼 추가 {% endcomment %}
-      
+      <button id="skipBtn" class="export-skip text-yellow-500 hover:text-yellow-600 font-medium">Skip</button>     {% comment %} Skip 버튼 추가 {% endcomment %}
     </div>
   </div>
-
-  
-  {% comment %} 25_04_21(월) Testing.. {% endcomment %}
-  <script>
-    window.onload = insertWelcomeMessage;
-  </script>
-
-
-  <script src="{% static 'js/script.js' %}"></script>
-
-
-  {% comment %} 25_04_20(일) Testing.. {% endcomment %}
   {% comment %} <script>
-    let selectCountryName ="";
-
-    function selectCountry(button, CountryName){
-      selectCountryName = CountryName;
-      document.getElementById("selectedCountry").innerText = CountryName;
-    }
-
-    function addQuestion() {
-      const input = document.getElementById("questionInput");
-      const chatArea = document.getElementById("chatArea");
-      const question = input.value.trim();
-      const country = selectCountryName;
-  
-      if (!question || !country) {
-        alert("질문과 국가를 모두 입력해주세요.");
-        return;
-      }
-  
-      const userDiv = document.createElement("div");
-      userDiv.className = "question text-right m-5";
-      userDiv.innerHTML = `<div class="inline-block bg-gray-200 rounded p-2 max-w-[80%]">${question}</div>`;
-      chatArea.appendChild(userDiv);
-      input.value = "";
-  
-      fetch("/api/chat/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user_message: question,
-          country: country,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          const answer = data.answer;
-          const botDiv = document.createElement("div");
-          botDiv.className = "answer text-left m-5";
-          botDiv.innerHTML = `<div class="inline-block bg-gray-300 rounded p-2 max-w-[80%]">${answer}</div>`;
-          chatArea.appendChild(botDiv);
-          chatArea.scrollTop = chatArea.scrollHeight;
-        })
-        .catch((err) => {
-          console.error("에러 발생:", err);
-        });
-    }
-  
-    // 엔터키 전송 처리
-    document.getElementById("questionInput").addEventListener("keydown", function (e) {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        addQuestion();
-      }
-    });
-  
-    // 추천 질문 버튼 텍스트 삽입
-    function insertSuggested() {
-      const text = event.target.innerText;
-      document.getElementById("questionInput").value = text;
-    }
+    window.onload = insertWelcomeMessage;
   </script> {% endcomment %}
-  
-  {% comment %} 25_04_20(일) Testing.. {% endcomment %}
-
-
+  <script src="{% static 'js/script.js' %}"></script>
 </body>
-
 </html>
