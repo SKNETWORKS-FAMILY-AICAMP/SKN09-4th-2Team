@@ -45,6 +45,7 @@ function applyNewCountry(button, countryName) {
 
     // 버튼 스타일
     document.querySelectorAll(".country-button").forEach(btn => btn.classList.remove("active"));
+    console.log(button)
     button.classList.add("active");
 
     // 선택된 국가 저장
@@ -158,7 +159,7 @@ async function addQuestion() {
   chatArea.innerHTML += `
     <div id="loading" class="answer text-left m-5">
       <div class="inline-block bg-gray-300 rounded p-2 max-w-[80%]">
-        <span class="loading">응답 중...</span>
+        <span class="loading loading-dots">응답 중</span>
       </div>
     </div>
   `;
@@ -366,6 +367,7 @@ function handleFileUpload(event) {
           if (data.country && data.messages) {
             // 국가 설정
             selectedCountry = data.country;
+            applyNewCountry(document.querySelector(`button[data-country=${selectedCountry}]`), selectedCountry);  // ✅ 추가: 파일 업로드 후 국가 자동 선택
             document.getElementById('selectedCountry').textContent = `선택된 국가: ${data.country}`;
             
             // 채팅 영역 비우기
@@ -382,7 +384,7 @@ function handleFileUpload(event) {
                 chatArea.innerHTML += `
                   <div class="question text-right m-5">
                     <div class="inline-block bg-gray-200 rounded p-2 max-w-[80%]">
-                      ${msg.content}
+                      ${msg.message}
                     </div>
                   </div>
                 `;
@@ -390,7 +392,7 @@ function handleFileUpload(event) {
                 chatArea.innerHTML += `
                   <div class="answer text-left m-5">
                     <div class="inline-block bg-gray-300 rounded p-2 max-w-[80%]">
-                      ${msg.content}
+                      ${msg.message}
                     </div>
                   </div>
                 `;
@@ -404,7 +406,50 @@ function handleFileUpload(event) {
         }
         // 텍스트 파일인 경우 - 단순 표시
         else if (file.name.endsWith('.txt')) {
-          alert('텍스트 파일은 현재 지원되지 않습니다. JSON 파일을 사용해주세요.');
+            console.log(content)
+            const lines = content.split('\n').map(line => line.trim());
+            console.log(lines)
+            let messages = [];
+            let selectedCountry = '';
+          
+            lines.forEach(line => {
+              if (line.startsWith('Country:')) {
+                selectedCountry = line.replace('Country:', '').trim();
+              } else if (line.startsWith('Q:')) {
+                messages.push({ role: 'user', message: line.replace('Q:', '').trim() });
+              } else if (line.startsWith('A:')) {
+                messages.push({ role: 'assistant', message: line.replace('A:', '').trim() });
+              }
+            });
+          
+            // 국가 설정
+            applyNewCountry(document.querySelector(`button[data-country="${selectedCountry}"]`), selectedCountry);
+            document.getElementById('selectedCountry').textContent = `선택된 국가: ${selectedCountry}`;
+          
+            // 채팅 영역 초기화
+            const chatArea = document.getElementById('chatArea');
+            chatArea.innerHTML = '';
+          
+            // 대화 복원
+            chatHistory = messages;
+            messages.forEach(msg => {
+              if (msg.role === 'user') {
+                chatArea.innerHTML += `
+                  <div class="question text-right m-5">
+                    <div class="inline-block bg-gray-200 rounded p-2 max-w-[80%]">
+                      ${msg.message}
+                    </div>
+                  </div>`;
+              } else {
+                chatArea.innerHTML += `
+                  <div class="answer text-left m-5">
+                    <div class="inline-block bg-gray-300 rounded p-2 max-w-[80%]">
+                      ${msg.message}
+                    </div>
+                  </div>`;
+              }
+            });
+            alert('대화가 성공적으로 불러와졌습니다.');
         }
       } catch (error) {
         alert('파일을 처리하는 중 오류가 발생했습니다: ' + error.message);
@@ -412,7 +457,6 @@ function handleFileUpload(event) {
     };
     
     reader.readAsText(file);
-    
     // 파일 입력 초기화
     event.target.value = '';
   }
@@ -445,7 +489,7 @@ function getRecommendQuestions(){
         data.recommend_questions.forEach(question => {
           const button = document.createElement('button');
           button.innerText = question;
-          button.className = 'bg-gray-300 px-3 py-1 rounded mb-2';
+          button.className = 'bg-gray-300 px-3 py-1 mb-2 ml-2 rounded';
           button.onclick = () => insertSuggested(question);
           questionInput.appendChild(button);
         });

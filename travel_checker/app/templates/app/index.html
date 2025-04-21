@@ -24,96 +24,92 @@
         <!-- 새채팅 -->
         <br>
         <br>
-        <button
-          {% comment %} class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
-          onclick="location.reload();"> {% endcomment %}
-          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
+        <button class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
           onclick="startNewChat();">
           💬 <span class="tag whitespace-nowrap">&nbsp; 새채팅</span>
         </button>
         <!-- 국가 선택 -->
-         <div id="country-wrapper" class="overflow-y-auto max-h-[75vh]">
-          <button
-          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
-          onclick="selectCountry(this, '대한민국')">
-          <img width="24" height="24" src="https://img.icons8.com/color/48/south-korea.png" alt="south-korea"/>
-          <span class="tag whitespace-nowrap">대한민국</span>
-        </button>
+        <div id="country-wrapper" class="overflow-y-auto h-[70vh]">
+          <button class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
+          onclick="selectCountry(this, '대한민국')" data-country="대한민국">
+            <img width="24" height="24" src="https://img.icons8.com/color/48/south-korea.png" alt="south-korea"/>
+            <span class="tag whitespace-nowrap">대한민국</span>
+          </button>
 
         <button
           class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
-          onclick="selectCountry(this, '베트남')">
+          onclick="selectCountry(this, '베트남')" data-country="베트남">
           <img width="24" height="24" src="https://img.icons8.com/color/48/vietnam.png" alt="vietnam"/>
           <span class="tag whitespace-nowrap">베트남</span>
         </button>
 
         <button
           class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
-          onclick="selectCountry(this, '홍콩')">
+          onclick="selectCountry(this, '홍콩')" data-country="홍콩">
           <img width="24" height="24" src="https://img.icons8.com/color/48/hongkong-flag.png" alt="hongkong-flag"/>
           <span class="tag whitespace-nowrap">홍콩</span>
         </button>
 
         <button
           class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
-          onclick="selectCountry(this, '일본')">
+          onclick="selectCountry(this, '일본')" data-country="일본">
           <img width="24" height="24" src="https://img.icons8.com/color/48/japan.png" alt="japan"/> 
           <span class="tag whitespace-nowrap">일본</span>
         </button>
 
-        <button
-          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
-          onclick="selectCountry(this, '미국')">
-          <img width="24" height="24" src="https://img.icons8.com/color/48/usa.png" alt="usa"/>
-          <span class="tag whitespace-nowrap">미국</span>
-        </button>
-        <!-- 중국 -->
-        <button
-          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
-          onclick="selectCountry(this, '중국')">
-          <img width="24" height="24" src="https://img.icons8.com/color/48/china.png" alt="china"/> <span class="tag whitespace-nowrap">중국</span>
-        </button>
+          <button
+            class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
+            onclick="selectCountry(this, '미국')" data-country="미국">
+            <img width="24" height="24" src="https://img.icons8.com/color/48/usa.png" alt="usa"/>
+            <span class="tag whitespace-nowrap">미국</span>
+          </button>
+          <!-- 중국 -->
+          <button
+            class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
+            onclick="selectCountry(this, '중국')" data-country="중국">
+            <img width="24" height="24" src="https://img.icons8.com/color/48/china.png" alt="china"/> <span class="tag whitespace-nowrap">중국</span>
+          </button>
 
-        <!-- 인도네시아 -->
-        <button
-          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
-          onclick="selectCountry(this, '인도네시아')">
-          <img width="24" height="24" src="https://img.icons8.com/color/48/indonesia.png" alt="indonesia"/>
-          <span class="tag whitespace-nowrap">인도네시아</span>
-        </button>
+          <!-- 인도네시아 -->
+          <button
+            class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
+            onclick="selectCountry(this, '인도네시아')" data-country="인도네시아">
+            <img width="24" height="24" src="https://img.icons8.com/color/48/indonesia.png" alt="indonesia"/>
+            <span class="tag whitespace-nowrap">인도네시아</span>
+          </button>
 
-        <!-- 말레이시아 -->
-        <button
-          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
-          onclick="selectCountry(this, '말레이시아')">
-          <img width="24" height="24" src="https://img.icons8.com/color/48/malaysia.png" alt="malaysia"/>
-          <span class="tag whitespace-nowrap">말레이시아</span>
-        </button>
+          <!-- 말레이시아 -->
+          <button
+            class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
+            onclick="selectCountry(this, '말레이시아')" data-country="말레이시아">
+            <img width="24" height="24" src="https://img.icons8.com/color/48/malaysia.png" alt="malaysia"/>
+            <span class="tag whitespace-nowrap">말레이시아</span>
+          </button>
 
-        <!-- 필리핀 -->
-        <button
-          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
-          onclick="selectCountry(this, '필리핀')">
-          <img width="24" height="24" src="https://img.icons8.com/color/48/philippines.png" alt="philippines"/>
-          <span class="tag whitespace-nowrap">필리핀</span>
-        </button>
-        <!-- 싱가포르 -->
-        <button
-          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
-          onclick="selectCountry(this, '싱가포르')">
-          <img width="24" height="24" src="https://img.icons8.com/color/48/singapore.png" alt="singapore"/>
-          <span class="tag whitespace-nowrap">싱가포르</span>
-        </button>
+          <!-- 필리핀 -->
+          <button
+            class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
+            onclick="selectCountry(this, '필리핀')" data-country="필리핀">
+            <img width="24" height="24" src="https://img.icons8.com/color/48/philippines.png" alt="philippines"/>
+            <span class="tag whitespace-nowrap">필리핀</span>
+          </button>
+          <!-- 싱가포르 -->
+          <button
+            class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
+            onclick="selectCountry(this, '싱가포르')" data-country="싱가포르">
+            <img width="24" height="24" src="https://img.icons8.com/color/48/singapore.png" alt="singapore"/>
+            <span class="tag whitespace-nowrap">싱가포르</span>
+          </button>
 
-        <!-- 대만 -->
-        <button
-          class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
-          onclick="selectCountry(this, '대만')">
-          <img width="24" height="24" src="https://img.icons8.com/color/48/taiwan.png" alt="taiwan"/> <span class="tag whitespace-nowrap">대만</span>
-        </button>
-        </div>
+          <!-- 대만 -->
+          <button
+            class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500 flex gap-x-2"
+            onclick="selectCountry(this, '대만')" data-country="대만">
+            <img width="24" height="24" src="https://img.icons8.com/color/48/taiwan.png" alt="taiwan"/> <span class="tag whitespace-nowrap">대만</span>
+          </button>
+      </div>
 
-        <div class="mt-4 flex justify-around footer-wrapper">
+      <div class="mt-4 flex justify-around footer-wrapper">
           <!-- 불러오기 -->
            <!-- 파일 불러오기 버튼 -->
           <button onclick="fileInput.click()"
@@ -141,7 +137,7 @@
     <!-- 메인 콘텐츠 -->
     <div id="mainContent" class="flex-1 p-4 transition-all duration-300">
       <!-- 채팅 영역 -->
-      <div class="relative h-[70%] border rounded bg-white mb-4 p-2 flex flex-col justify-end">
+      <div class="relative h-[70vh] border rounded bg-white mb-4 p-2 flex flex-col justify-end">
         <header class="absolute left-1/2 -translate-x-1/2 text-center text-[#B7B7EF] top-4">
           <h1 class="text-6xl font-bold select-none">travel checker</h1>
         </header>
@@ -183,9 +179,9 @@
         </div>
       <!-- 추천 질문 -->
       <div id="recommendQuestion" class="select-none space-x-2">
-        <button onclick="insertSuggested()" class="bg-gray-300 px-3 py-1 mb-2 rounded">여행지 추천해 주세요</button>
-        <button onclick="insertSuggested()" class="bg-gray-300 px-3 py-1 mb-2 rounded">베트남 수도의 맛집 추천해주세요</button>
-        <button onclick="insertSuggested()" class="bg-gray-300 px-3 py-1 mb-2 rounded">베트남에서 조심해야할 에티켓은 무엇인가요?</button>
+        <button onclick="insertSuggested()" class="bg-gray-300 px-3 py-1 mb-2 ml-2 rounded">여행지 추천해 주세요</button>
+        <button onclick="insertSuggested()" class="bg-gray-300 px-3 py-1 mb-2 ml-2 rounded">베트남 수도의 맛집 추천해주세요</button>
+        <button onclick="insertSuggested()" class="bg-gray-300 px-3 py-1 mb-2 ml-2 rounded">베트남에서 조심해야할 에티켓은 무엇인가요?</button>
       </div>
     </div>
   </div>
