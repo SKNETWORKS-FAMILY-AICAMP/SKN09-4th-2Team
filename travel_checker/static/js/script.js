@@ -17,6 +17,90 @@ document.addEventListener('DOMContentLoaded', function() {
   // 채팅 영역 초기화
   document.getElementById('chatArea').innerHTML = '';
 });
+// ----------------------------- 2025_04_21(월)       Testing..     -----------------------------
+
+let selectedCountryName = "";
+
+function selectCountry(button, newCountryName) {
+    console.log(selectedCountryName)
+    console.log(newCountryName)
+    const chatArea = document.getElementById("chatArea");                                           // 채팅 영역 가져오기
+    const hasChat = chatArea.querySelector(".question") || chatArea.querySelector(".answer");       // 채팅이 있는지 확인
+
+    // 🚩 selectedCountryName이 비어있고 채팅이 있으면 강제로 초기값 설정
+    if (!selectedCountryName && hasChat) {
+        selectedCountryName = document.getElementById("selectedCountry").textContent;   // 화면에 표시된 국가명을 강제로 selectedCountryName에 저장
+    }
+
+    // 기존 국가와 다른 나라를 선택했고, 채팅이 존재하면
+    if (selectedCountryName && selectedCountryName !== newCountryName && hasChat) {
+        showExportModalForCountrySwitch(button, newCountryName);                        // 모달을 띄워서 내보낼지 여부 확인
+    } else {
+        applyNewCountry(button, newCountryName);                                        // 처음 선택이거나 채팅 없으면 그냥 국가 변경
+    }
+}
+
+function applyNewCountry(button, countryName) {
+    const chatArea = document.getElementById("chatArea");
+    chatArea.innerHTML = "";
+
+    // 국가명 갱신
+    document.getElementById("selectedCountry").textContent = countryName;
+
+    // 버튼 스타일
+    document.querySelectorAll(".country-button").forEach(btn => btn.classList.remove("active"));
+    button.classList.add("active");
+
+    // 선택된 국가 저장
+    selectedCountryName = countryName;
+}
+
+// ----------------------------- 2025_04_21(월)       Testing..     -----------------------------
+
+
+function addQuestion() {
+    const input = document.getElementById("questionInput");     // 입력창 요소 가져오기
+    const chatArea = document.getElementById("chatArea");       // 채팅 표시 영역 가져오기
+    const text = input.value.trim();                            // 입력값 앞뒤 공백 제거
+    if (!text) return;                                          // 입력이 비어있으면 실행 중단
+
+    // 👉 사용자 질문 채팅 추가
+    const questionWrapper = document.createElement("div");
+    questionWrapper.className = "question text-right m-5";
+    questionWrapper.innerHTML = `<div class="inline-block bg-gray-200 rounded p-2 max-w-[80%]">${text}</div>`;
+    chatArea.appendChild(questionWrapper);  // 채팅창에 추가
+
+    input.value = "";       // 입력창 비우기
+
+    // 👉 응답 자리(로딩 중 메시지) 추가
+    const answerWrapper = document.createElement("div");
+    answerWrapper.className = "answer text-left m-5";
+    answerWrapper.innerHTML = `<div class="inline-block bg-gray-300 rounded p-2 max-w-[80%]">답변을 생성 중입니다...</div>`;
+    chatArea.appendChild(answerWrapper);
+
+    // 👉 1초 후 실제 답변으로 변경
+    setTimeout(() => {
+        answerWrapper.querySelector("div").textContent = generateAnswer(text);
+    }, 1000);
+
+}
+
+function generateAnswer(userText) {
+    // 실제 API 응답이나 간단한 조건 분기 가능
+    if (userText.includes('대만')) {
+        return '대만의 명소로는 타이베이 101, 지우펀, 단수이 등이 있어요!';
+    }
+    return '좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.좋은 질문이에요! 관련 정보를 찾아볼게요.';
+}
+
+function insertSuggested() {
+    document.getElementById('questionInput').value = event.target.textContent;
+    addQuestion();
+}
+
+document.getElementById('questionInput').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') addQuestion();
+});
 
 // 사이드바 토글
 function toggleSidebar() {
@@ -38,25 +122,6 @@ function toggleSidebar() {
     sidebar.classList.add('bg-[#343949]');
   }
 }
-
-// 국가 선택
-function selectCountry(button, country) {
-  // 모든 버튼에서 선택 상태 제거
-  document.querySelectorAll('.country-button').forEach(btn => {
-    btn.classList.remove('bg-blue-500');
-    btn.classList.add('bg-[#0A0C19]');
-  });
-  
-  // 선택된 버튼 스타일 변경
-  button.classList.remove('bg-[#0A0C19]');
-  button.classList.add('bg-blue-500');
-  
-  // 선택된 국가 저장 및 표시
-  selectedCountry = country;
-  document.getElementById('selectedCountry').textContent = `선택된 국가: ${country}`;
-  getRecommendQuestions()
-}
-
 // 채팅에 질문 추가
 async function addQuestion() {
   const questionInput = document.getElementById('questionInput');
@@ -66,7 +131,7 @@ async function addQuestion() {
   if (!question) return;
   
   // 국가가 선택되지 않았으면 알림
-  if (!selectedCountry) {
+  if (!selectedCountryName) {
     alert('먼저 국가를 선택해주세요.');
     return;
   }
@@ -185,6 +250,61 @@ function hideExportModal() {
 }
 
 // 채팅 내보내기
+
+
+// ----------------------------- 2025_04_21(월)       Testing..     -----------------------------
+
+// ✅ 나라를 바꿀 때 채팅이 있을 경우 모달창을 띄워 사용자 선택을 받는 함수
+function showExportModalForCountrySwitch(button, newCountry) {
+    const modal = document.getElementById("exportModal");
+    const overlay = document.getElementById("overlay");
+
+    // 모달과 오버레이 표시
+    modal.classList.remove("hidden");
+    overlay.classList.remove("hidden");
+
+    // 버튼 요소 가져오기
+    const jsonBtn = modal.querySelector("button.export-json");
+    const textBtn = modal.querySelector("button.export-text");
+    const skipBtn = modal.querySelector(".export-skip");                // ✅ 추가
+
+    // 공통 처리 함수: 내보내기 후 국가 변경
+    const cleanupAndSwitch = (type) => {
+        exportChat(type);                                               // 내보내기 실행
+        hideExportModal();                                              // 모달 닫기
+        setTimeout(() => applyNewCountry(button, newCountry), 50);      // 새로운 국가로 변경
+    };
+
+    // 각 버튼 클릭 시 동작 지정
+    jsonBtn.onclick = () => cleanupAndSwitch("json");
+    textBtn.onclick = () => cleanupAndSwitch("txt");
+
+    // Skip 클릭 시: 저장 없이 바로 국가 변경
+    skipBtn.onclick = () => {
+        hideExportModal();
+        setTimeout(() => applyNewCountry(button, newCountry), 50);
+    };
+
+    // 오버레이 클릭 시도 skip과 동일한 동작
+    overlay.onclick = () => {
+        hideExportModal();
+        setTimeout(() => applyNewCountry(button, newCountry), 50);
+    };
+    
+}
+
+function hideExportModal() {
+    document.getElementById('overlay').classList.add('hidden');
+    document.getElementById('exportModal').classList.add('hidden');
+
+    
+    // 오버레이 클릭 이벤트 제거 (중복 방지)
+    document.getElementById('overlay').onclick = null;
+}
+
+// ----------------------------- 2025_04_21(월)       Testing..     -----------------------------
+
+
 function exportChat(type) {
     const chatItems = document.querySelectorAll('#chatArea .question, #chatArea .answer');
 
@@ -220,83 +340,84 @@ function exportChat(type) {
 
 // 파일 업로드 처리
 function handleFileUpload(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-  
-  const reader = new FileReader();
-  
-  reader.onload = function(e) {
-    try {
-      // 파일 내용 파싱
-      let content = e.target.result;
-      
-      // JSON 파일인 경우
-      if (file.name.endsWith('.json')) {
-        const data = JSON.parse(content);
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    
+    reader.onload = function(e) {
+      try {
+        // 파일 내용 파싱
+        let content = e.target.result;
         
-        if (data.country && data.messages) {
-          // 국가 설정
-          selectedCountry = data.country;
-          document.getElementById('selectedCountry').textContent = `선택된 국가: ${data.country}`;
+        // JSON 파일인 경우
+        if (file.name.endsWith('.json')) {
+          const data = JSON.parse(content);
           
-          // 채팅 영역 비우기
-          const chatArea = document.getElementById('chatArea');
-          chatArea.innerHTML = '';
-          
-          // 대화 내용 복원
-          chatHistory = data.messages;
-          
-          // 대화 표시
-          data.messages.forEach(msg => {
-            if (msg.role === 'user') {
-              chatArea.innerHTML += `
-                <div class="question text-right m-5">
-                  <div class="inline-block bg-gray-200 rounded p-2 max-w-[80%]">
-                    ${msg.content}
+          if (data.country && data.messages) {
+            // 국가 설정
+            selectedCountry = data.country;
+            document.getElementById('selectedCountry').textContent = `선택된 국가: ${data.country}`;
+            
+            // 채팅 영역 비우기
+            const chatArea = document.getElementById('chatArea');
+            chatArea.innerHTML = '';
+            
+            // 대화 내용 복원
+            chatHistory = data.messages;
+            
+            // 대화 표시
+            data.messages.forEach(msg => {
+              if (msg.role === 'user') {
+                chatArea.innerHTML += `
+                  <div class="question text-right m-5">
+                    <div class="inline-block bg-gray-200 rounded p-2 max-w-[80%]">
+                      ${msg.content}
+                    </div>
                   </div>
-                </div>
-              `;
-            } else {
-              chatArea.innerHTML += `
-                <div class="answer text-left m-5">
-                  <div class="inline-block bg-gray-300 rounded p-2 max-w-[80%]">
-                    ${msg.content}
+                `;
+              } else {
+                chatArea.innerHTML += `
+                  <div class="answer text-left m-5">
+                    <div class="inline-block bg-gray-300 rounded p-2 max-w-[80%]">
+                      ${msg.content}
+                    </div>
                   </div>
-                </div>
-              `;
-            }
-          });
-          
-          alert('대화가 성공적으로 불러와졌습니다.');
-        } else {
-          alert('유효하지 않은 대화 파일입니다.');
+                `;
+              }
+            });
+            
+            alert('대화가 성공적으로 불러와졌습니다.');
+          } else {
+            alert('유효하지 않은 대화 파일입니다.');
+          }
         }
+        // 텍스트 파일인 경우 - 단순 표시
+        else if (file.name.endsWith('.txt')) {
+          alert('텍스트 파일은 현재 지원되지 않습니다. JSON 파일을 사용해주세요.');
+        }
+      } catch (error) {
+        alert('파일을 처리하는 중 오류가 발생했습니다: ' + error.message);
       }
-      // 텍스트 파일인 경우 - 단순 표시
-      else if (file.name.endsWith('.txt')) {
-        alert('텍스트 파일은 현재 지원되지 않습니다. JSON 파일을 사용해주세요.');
-      }
-    } catch (error) {
-      alert('파일을 처리하는 중 오류가 발생했습니다: ' + error.message);
-    }
-  };
+    };
+    
+    reader.readAsText(file);
+    
+    // 파일 입력 초기화
+    event.target.value = '';
+  }
   
-  reader.readAsText(file);
-  
-  // 파일 입력 초기화
-  event.target.value = '';
-}
-
-// CSRF 토큰 가져오기 (Django 보안)
-function getCookie(name) {
-  let cookieValue = null;
-  if (document.cookie && document.cookie !== '') {
-    const cookies = document.cookie.split(';');
-    for (let i = 0; i < cookies.length; i++) {
-      const cookie = cookies[i].trim();
-      if (cookie.substring(0, name.length + 1) === (name + '=')) {
-        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-        break;
+  // CSRF 토큰 가져오기 (Django 보안)
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
       }
     }
   }
@@ -321,4 +442,4 @@ function getRecommendQuestions(){
         });
       })
       .catch(error => console.error('Error:', error));
-  }
+}
