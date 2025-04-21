@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 import os
+import requests
 
 # Create your views here.
 def index(request):
@@ -24,32 +25,18 @@ def chat_api(request):
     return JsonResponse({"error": "Invalid request method."}, status=400)
 
 def call_sagemaker_endpoint(user_message, country):
-    # Initialize the SageMaker runtime client
-    sagemaker_runtime = boto3.client('sagemaker-runtime', region_name='ap-northeast-2')
+    # post 요청 보내기
+    res = requests.post(
+        url="http://69.30.85.229:22045/input",
+        headers={
+            "Content-Type": "application/json",
+        },
+        json={
+            "question": country + user_message,
+        }
+    )
+    return res.json()
 
-    # Define the endpoint name
-    endpoint_name = os.environ.get("SAGEMAKER_ENDPOINT_NAME")
-
-    # Prepare the payload
-    payload = {
-        "user_message": user_message,
-        "country": country
-    }
-
-    try:
-        # Call the SageMaker endpoint
-        response = sagemaker_runtime.invoke_endpoint(
-            EndpointName=endpoint_name,
-            ContentType='application/json',
-            Body=json.dumps(payload)
-        )
-
-        # Read the response
-        result = json.loads(response['Body'].read().decode())
-        return result
-
-    except ClientError as e:
-        return {"error": str(e)}
     
 def getRecommendQuestion(request):
     # Get the user message and country from the request

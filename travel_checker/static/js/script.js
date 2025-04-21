@@ -35,7 +35,6 @@ function selectCountry(button, newCountryName) {
     } else {
         applyNewCountry(button, newCountryName);                                        // 처음 선택이거나 채팅 없으면 그냥 국가 변경
     }
-    getRecommendQuestions();
 
     showInputSection();
 }
@@ -52,6 +51,7 @@ function applyNewCountry(button, countryName) {
     selectedCountryName = countryName;
     chatArea.innerHTML = "";
     insertWelcomeMessage(selectedCountryName)
+    getRecommendQuestions();
 }
 
 // ----------------------------- 2025_04_21(월)       Testing..     -----------------------------
@@ -187,7 +187,7 @@ async function addQuestion() {
       chatArea.innerHTML += `
         <div class="answer text-left m-5">
           <div class="inline-block bg-gray-300 rounded p-2 max-w-[80%]">
-            ${data.response}
+            ${data.response.answer.split("###")[0]}
           </div>
         </div>
       `;
