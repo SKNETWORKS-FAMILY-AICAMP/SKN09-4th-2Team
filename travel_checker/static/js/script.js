@@ -15,16 +15,13 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('fileInput').addEventListener('change', handleFileUpload);
 
   // 채팅 영역 초기화
-  document.getElementById('chatArea').innerHTML = '';
+  chatArea.innerHTML = '';
 });
 // ----------------------------- 2025_04_21(월)       Testing..     -----------------------------
 
 let selectedCountryName = "";
 
 function selectCountry(button, newCountryName) {
-    console.log(selectedCountryName)
-    console.log(newCountryName)
-    const chatArea = document.getElementById("chatArea");                                           // 채팅 영역 가져오기
     const hasChat = chatArea.querySelector(".question") || chatArea.querySelector(".answer");       // 채팅이 있는지 확인
 
     // 🚩 selectedCountryName이 비어있고 채팅이 있으면 강제로 초기값 설정
@@ -41,13 +38,9 @@ function selectCountry(button, newCountryName) {
     getRecommendQuestions();
 
     showInputSection();
-    insertWelcomeMessage(newCountryName);
 }
 
 function applyNewCountry(button, countryName) {
-    const chatArea = document.getElementById("chatArea");
-    chatArea.innerHTML = "";
-
     // 국가명 갱신
     document.getElementById("selectedCountry").textContent = countryName;
 
@@ -57,6 +50,8 @@ function applyNewCountry(button, countryName) {
 
     // 선택된 국가 저장
     selectedCountryName = countryName;
+    chatArea.innerHTML = "";
+    insertWelcomeMessage(selectedCountryName)
 }
 
 // ----------------------------- 2025_04_21(월)       Testing..     -----------------------------
@@ -130,6 +125,7 @@ function toggleSidebar() {
 }
 // 채팅에 질문 추가
 async function addQuestion() {
+    document.getElementById('welcomeMessage')?.remove();
   const questionInput = document.getElementById('questionInput');
   const question = questionInput.value.trim();
   
@@ -253,6 +249,7 @@ function showExportModal() {
 function hideExportModal() {
   document.getElementById('overlay').classList.add('hidden');
   document.getElementById('exportModal').classList.add('hidden');
+  insertWelcomeMessage(selectedCountryName)
 }
 
 // 채팅 내보내기
@@ -288,7 +285,9 @@ function showExportModalForCountrySwitch(button, newCountry) {
     // Skip 클릭 시: 저장 없이 바로 국가 변경
     skipBtn.onclick = () => {
         hideExportModal();
-        setTimeout(() => applyNewCountry(button, newCountry), 50);
+        setTimeout(() => {
+            applyNewCountry(button, newCountry)
+        }, 50);
     };
 
     // 오버레이 클릭 시도 skip과 동일한 동작
@@ -445,21 +444,14 @@ function getRecommendQuestions(){
         data.recommend_questions.forEach(question => {
           const button = document.createElement('button');
           button.innerText = question;
-          button.className = 'bg-gray-300 px-3 py-1 rounded';
+          button.className = 'bg-gray-300 px-3 py-1 rounded mb-2';
           button.onclick = () => insertSuggested(question);
           questionInput.appendChild(button);
         });
       })
       .catch(error => console.error('Error:', error));
 }
-
-
-
-
-
-
 // -----------------------------   2025/04/21 (월)   -----------------------------
-
 window.onload = () => {
   insertWelcomeMessage("여행 및 나라");          // ✅ 추가: 로딩 시 안내 메시지
   
@@ -467,17 +459,12 @@ window.onload = () => {
 
 
 function insertWelcomeMessage(countryName) {  // ✅ 추가
-  const chatArea = document.getElementById("chatArea");
-  chatArea.innerHTML = "";
-
-  const wrapper = document.createElement("div");
   const welcomeDiv = document.createElement("div");
   welcomeDiv.className = "mx-auto my-10 text-center text-2xl text-gray-500 font-semibold select-none";
   welcomeDiv.textContent = `${countryName}에 관해서 물어보세요!`;
   welcomeDiv.style.lineHeight = "20rem";  // ✅ 글 위로 올림
-  
-  wrapper.appendChild(welcomeDiv);
-  chatArea.appendChild(wrapper);
+  welcomeDiv.id = "welcomeMessage";  // ✅ ID 추가
+  chatArea.appendChild(welcomeDiv);
 }
 
 function startNewChat() {  // ✅ 추가
