@@ -27,8 +27,10 @@
         <br>
         <br>
         <button
+          {% comment %} class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
+          onclick="location.reload();"> {% endcomment %}
           class="country-button w-full py-2 mb-2 p-4 text-left rounded-md bg-[#0A0C19] text-white hover:bg-gray-500"
-          onclick="location.reload();">
+          onclick="startNewChat();">
           💬 새채팅
         </button>
 
@@ -152,36 +154,39 @@
       </div>
 
       <!-- 질문 입력창 -->
-      <!-- 선택된 국가 (검색창 위로 이동) -->
-      <div id="selectedCountry" class="select-none text-lg font-semibold text-yellow-700 mb-2">국가를 선택해주세요</div>
-      <div class="relative mb-2">
-        <!-- 파일 첨부 버튼 (오른쪽 안) -->
-        <label for="fileInput"
-          class="absolute top-1/2 right-14 -translate-y-1/2 text-gray-500 cursor-pointer hover:text-gray-700">
-          📎
-        </label>
-        <input type="file" id="fileInput" accept=".json,.txt" class="hidden">
-
-        <!-- 전송 버튼 (오른쪽 끝) -->
-        <button onclick="addQuestion()"
-          class="select-none absolute top-1/2 right-2 -translate-y-1/2 bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
-          ➤
-        </button>
-
+       <!-- ✅ 입력 영역 전체를 감싸는 div 추가 -->
+      <div id="inputWrapper" class="mt-4"> <!-- ← 이 줄 추가 -->
+        <!-- 선택된 국가 (검색창 위로 이동) -->
+        <div id="selectedCountry" class="select-none text-lg font-semibold text-yellow-700 mb-2">국가를 선택해주세요</div>
         <!-- 입력창 -->
-        <input id="questionInput" maxlength="500" class="select-none w-full pr-20 p-2 border rounded"
-          placeholder="500자 이내로 작성해 주세요.">
-      </div>
+        <div class="relative mb-2">
+          <!-- 파일 첨부 버튼 (오른쪽 안) -->
+          <label for="fileInput"
+            class="absolute top-1/2 right-14 -translate-y-1/2 text-gray-500 cursor-pointer hover:text-gray-700">
+            📎
+          </label>
+          <input type="file" id="fileInput" accept=".json,.txt" class="hidden">
 
-      <!-- 추천 질문 -->
-      <div id="recommendQuestion" class="select-none space-x-2">
-        <button onclick="insertSuggested()" class="bg-gray-300 px-3 py-1 rounded">여행지 추천해 주세요</button>
-        <button onclick="insertSuggested()" class="bg-gray-300 px-3 py-1 rounded">베트남 수도의 맛집 추천해주세요</button>
-        <button onclick="insertSuggested()" class="bg-gray-300 px-3 py-1 rounded">베트남에서 조심해야할 에티켓은 무엇인가요?</button>
+          <!-- 전송 버튼 (오른쪽 끝) -->
+          <button onclick="addQuestion()"
+            class="select-none absolute top-1/2 right-2 -translate-y-1/2 bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
+            ➤
+          </button>
+
+          <input id="questionInput" maxlength="500" class="select-none w-full pr-20 p-2 border rounded"
+            placeholder="500자 이내로 작성해 주세요.">
+        </div>
+
+        <!-- 추천 질문 -->
+        <div id="recommendQuestion" class="select-none space-x-2">
+          <button onclick="insertSuggested()" class="bg-gray-300 px-3 py-1 rounded">여행지 추천해 주세요</button>
+          <button onclick="insertSuggested()" class="bg-gray-300 px-3 py-1 rounded">베트남 수도의 맛집 추천해주세요</button>
+          <button onclick="insertSuggested()" class="bg-gray-300 px-3 py-1 rounded">베트남에서 조심해야할 에티켓은 무엇인가요?</button>
+        </div>
       </div>
     </div>
   </div>
-
+  
   <!-- 오버레이 -->
   <div id="overlay" class="hidden fixed inset-0 bg-black bg-opacity-30 z-10" onclick="hideExportModal()"></div>
   <!-- 모달 -->
@@ -207,6 +212,13 @@
       
     </div>
   </div>
+
+  
+  {% comment %} 25_04_21(월) Testing.. {% endcomment %}
+  <script>
+    window.onload = insertWelcomeMessage;
+  </script>
+
 
   <script src="{% static 'js/script.js' %}"></script>
 
