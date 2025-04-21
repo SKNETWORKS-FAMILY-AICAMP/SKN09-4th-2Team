@@ -26,16 +26,16 @@ function toggleSidebar() {
   
   if (sidebar.classList.contains('w-64')) {
     sidebar.classList.remove('w-64');
-    sidebar.classList.add('w-16');
-    sidebarContent.classList.add('hidden');
+    sidebar.classList.add('w-24');
+    sidebarContent.classList.add('collapsed');
     mainContent.classList.add('ml-0');
-    sidebar.classList.remove('bg-[#343949]');
+    // sidebar.classList.remove('bg-[#343949]');
   } else {
-    sidebar.classList.remove('w-16');
+    sidebar.classList.remove('w-24');
     sidebar.classList.add('w-64');
-    sidebarContent.classList.remove('hidden');
+    sidebarContent.classList.remove('collapsed');
     mainContent.classList.remove('ml-0');
-    sidebar.classList.add('bg-[#343949]');
+    // sidebar.classList.add('bg-[#343949]');
   }
 }
 

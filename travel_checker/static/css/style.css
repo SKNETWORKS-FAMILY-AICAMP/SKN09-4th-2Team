@@ -60,3 +60,19 @@
         content: '....';
     }
 }
+
+#mainContent{
+    margin: 0 auto;
+    max-width: 1080px;
+}
+
+#sidebar .collapsed .tag {
+    display: none;
+}
+
+#sidebar .collapsed .footer-wrapper {
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
