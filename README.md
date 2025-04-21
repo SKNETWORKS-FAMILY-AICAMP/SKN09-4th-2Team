@@ -63,7 +63,11 @@
 - 개발 환경: ![VS Code](https://img.shields.io/badge/-VS%20Code-007ACC?logo=visualstudiocode&logoColor=white) ![Colab](https://img.shields.io/badge/-Google%20Colab-F9AB00?logo=googlecolab&logoColor=white) ![RunPod](https://img.shields.io/badge/-RunPod-5F43DC?logo=cloud&logoColor=white)
 - VectorDB :  ![ChromaDB](https://img.shields.io/badge/ChromaDB-white)
 - LLM : ![Gemma](https://img.shields.io/badge/-Gemma-4285F4?logo=google&logoColor=white)
-- 프레임워크 : <img src='https://img.shields.io/badge/%F0%9F%A4%97%20HF_transformer%20-yellow'>
+- 프레임워크 : <img src='https://img.shields.io/badge/%F0%9F%A4%97%20HF_transformer%20-yellow'> ![Django](https://img.shields.io/badge/-Django-2f4f4f?logo=Django&logoColor=white) ![Flask](https://img.shields.io/badge/-Flask-a52a2a?logo=Flask&logoColor=white)
+- 서버/WSGI : ![Gunicorn](https://img.shields.io/badge/-Gunicorn-fdf5e6?logo=Gunicorn&logoColor=green) ![Nginx](https://img.shields.io/badge/-Nginx-32cd32?logo=Nginx&logoColor=white)
+- 모델 배포 : ![Docker](https://img.shields.io/badge/-Docker-e6e6fa?logo=Docker&logoColor=blue) ![DockerCompose](https://img.shields.io/badge/-DockerCompose-00bfff?logo=DockerCompose&logoColor=white)
+- 클라우드 인프라 : ![AWSEC2](https://img.shields.io/badge/-AWSEC2-ff8c00?logo=AWSEC2&logoColor=white)
+- 모델 저장소 : ![HuggingFace](https://img.shields.io/badge/-HuggingFace-fff5ee?logo=HuggingFace&logoColor=yellow)
 - 협업 툴 : ![GitHub](https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white)
 
 #### 베이스 모델 선정 이유
@@ -76,7 +80,8 @@
 <br>
 
 ## 4. 시스템 구성도
-![image](https://github.com/user-attachments/assets/213f8bda-27d7-4219-a886-068f21b73903)
+![4차_시스템 아키텍쳐](https://github.com/user-attachments/assets/90fbcd30-f044-4b44-8f84-9c3c4f5cdcf3)
+
 
 <br><br>
 
@@ -97,18 +102,25 @@
 
 ## 8. 테스트 계획 및 결과 보고서
 
+### 🧪 테스트 시나리오 (Test Scenario)
+![테스트 시나리오](https://github.com/user-attachments/assets/9ad20d88-73b5-4842-9ca2-b593cb4e2306)
+
+<br>
+
 ### 🧪 테스트 계획서 (Test Plan)
+![테스트 계획서](https://github.com/user-attachments/assets/78ff3363-d428-4549-b11a-ae72d3c24a01)
 
-
+<br>
 
 ### ✅ 테스트 결과 보고서 (Test Report)
-
-
+![테스트 결과 보고서](https://github.com/user-attachments/assets/ea711646-9daf-475c-8010-b92c777e2ef8)
 
 <br><br>
 
 ## 9. 수행결과(테스트/시연 페이지)
-
+![테스트 페이지0](https://github.com/user-attachments/assets/6a76b0a8-ce82-4561-b55a-0eb168de072a)
+<img width="1672" alt="테스트 페이지1" src="https://github.com/user-attachments/assets/42fc6180-9eda-4a5f-8444-bff025236915" />
+<img width="1278" alt="테스트 페이지2" src="https://github.com/user-attachments/assets/207e698a-157a-4d80-abe5-d67697d30fef" />
 
 
 <br><br><br><br>
