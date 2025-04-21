@@ -29,11 +29,13 @@ function toggleSidebar() {
     sidebar.classList.add('w-16');
     sidebarContent.classList.add('hidden');
     mainContent.classList.add('ml-0');
+    sidebar.classList.remove('bg-[#343949]');
   } else {
     sidebar.classList.remove('w-16');
     sidebar.classList.add('w-64');
     sidebarContent.classList.remove('hidden');
     mainContent.classList.remove('ml-0');
+    sidebar.classList.add('bg-[#343949]');
   }
 }
 
