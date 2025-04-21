@@ -116,16 +116,16 @@ function toggleSidebar() {
   
   if (sidebar.classList.contains('w-64')) {
     sidebar.classList.remove('w-64');
-    sidebar.classList.add('w-16');
-    sidebarContent.classList.add('hidden');
+    sidebar.classList.add('w-24');
+    sidebarContent.classList.add('collapsed');
     mainContent.classList.add('ml-0');
-    sidebar.classList.remove('bg-[#343949]');
+    // sidebar.classList.remove('bg-[#343949]');
   } else {
-    sidebar.classList.remove('w-16');
+    sidebar.classList.remove('w-24');
     sidebar.classList.add('w-64');
-    sidebarContent.classList.remove('hidden');
+    sidebarContent.classList.remove('collapsed');
     mainContent.classList.remove('ml-0');
-    sidebar.classList.add('bg-[#343949]');
+    // sidebar.classList.add('bg-[#343949]');
   }
 }
 // 채팅에 질문 추가
@@ -313,8 +313,11 @@ function hideExportModal() {
 
 function exportChat(type) {
     const chatItems = document.querySelectorAll('#chatArea .question, #chatArea .answer');
-
     if (type === 'json') {
+        const data = {
+            "country": selectedCountry,
+            "messages": []
+        }
         const messages = [];
         chatItems.forEach(el => {
             messages.push({
@@ -322,14 +325,15 @@ function exportChat(type) {
                 message: el.textContent.trim()
             });
         });
-        const json = JSON.stringify(messages, null, 2); // 보기 좋은 들여쓰기
+        data.messages = messages;
+        const json = JSON.stringify(data, null, 2); // 보기 좋은 들여쓰기
         const blob = new Blob([json], { type: 'application/json' });
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
         link.download = 'chat.json';
         link.click();
     } else {
-        let text = '';
+        let text = `Country: ${selectedCountry}\n`;
         chatItems.forEach(el => {
             text += el.classList.contains('question') ? 'Q: ' : 'A: ';
             text += el.textContent.trim() + '\n';
