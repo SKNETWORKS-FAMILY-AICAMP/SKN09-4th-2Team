@@ -2,13 +2,12 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
-import boto3
 import os
-from botocore.exceptions import ClientError
 
 # Create your views here.
 def index(request):
     return render(request, "app/index.html")
+
 
 @csrf_exempt
 def chat_api(request):
