@@ -122,7 +122,6 @@ function toggleSidebar() {
     sidebar.classList.add('bg-[#343949]');
   }
 }
-
 // 채팅에 질문 추가
 async function addQuestion() {
   const questionInput = document.getElementById('questionInput');
@@ -421,5 +420,26 @@ function handleFileUpload(event) {
         }
       }
     }
-    return cookieValue;
   }
+  return cookieValue;
+}
+
+// 추천 질문 가져오기
+function getRecommendQuestions(){
+    fetch(`api/question/recommend?country=${selectedCountry}`, headers = {
+        'Content-Type': 'application/json',
+      })
+      .then(response => response.json())
+      .then(data => {
+        const questionInput = document.getElementById('recommendQuestion');
+        questionInput.innerHTML = ''; // 기존 버튼 제거
+        data.recommend_questions.forEach(question => {
+          const button = document.createElement('button');
+          button.innerText = question;
+          button.className = 'bg-gray-300 px-3 py-1 rounded';
+          button.onclick = () => insertSuggested(question);
+          questionInput.appendChild(button);
+        });
+      })
+      .catch(error => console.error('Error:', error));
+}
