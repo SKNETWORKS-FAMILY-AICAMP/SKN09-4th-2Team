@@ -54,6 +54,7 @@ function selectCountry(button, country) {
   // 선택된 국가 저장 및 표시
   selectedCountry = country;
   document.getElementById('selectedCountry').textContent = `선택된 국가: ${country}`;
+  getRecommendQuestions()
 }
 
 // 채팅에 질문 추가
@@ -301,3 +302,23 @@ function getCookie(name) {
   }
   return cookieValue;
 }
+
+// 추천 질문 가져오기
+function getRecommendQuestions(){
+    fetch(`api/question/recommend?country=${selectedCountry}`, headers = {
+        'Content-Type': 'application/json',
+      })
+      .then(response => response.json())
+      .then(data => {
+        const questionInput = document.getElementById('recommendQuestion');
+        questionInput.innerHTML = ''; // 기존 버튼 제거
+        data.recommend_questions.forEach(question => {
+          const button = document.createElement('button');
+          button.innerText = question;
+          button.className = 'bg-gray-300 px-3 py-1 rounded';
+          button.onclick = () => insertSuggested(question);
+          questionInput.appendChild(button);
+        });
+      })
+      .catch(error => console.error('Error:', error));
+  }
