@@ -204,9 +204,9 @@
 
     <!-- 선택 버튼 -->
     <div class="flex justify-around">
-      <button class="export-json text-blue-500 hover:text-blue-600 font-medium">Json</button>
-      <button class="export-text text-blue-500 hover:text-blue-600 font-medium">Text</button>
-      <button id="skipBtn" class="export-skip text-yellow-500 hover:text-yellow-600 font-medium">Skip</button>     {% comment %} Skip 버튼 추가 {% endcomment %}
+      <button class="export-json text-blue-500 hover:text-blue-600 font-medium" onclick="cleanupAndSwitch('json')">Json</button>
+      <button class="export-text text-blue-500 hover:text-blue-600 font-medium" onclick="cleanupAndSwitch('txt')">Text</button>
+      <button id="skipBtn" class="export-skip text-yellow-500 hover:text-yellow-600 font-medium" onclick="hideExportModal()">Skip</button>     {% comment %} Skip 버튼 추가 {% endcomment %}
     </div>
   </div>
   {% comment %} <script>

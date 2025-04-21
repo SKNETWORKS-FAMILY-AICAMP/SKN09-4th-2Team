@@ -163,6 +163,7 @@ async function addQuestion() {
       </div>
     </div>
   `;
+  questionInput.disabled = true    
   
   // 챗봇 API 호출
   try {
@@ -193,6 +194,7 @@ async function addQuestion() {
         </div>
       `;
       
+      questionInput.disabled = false    
       // 대화 기록 저장
       chatHistory.push({
         role: 'user',
@@ -214,6 +216,7 @@ async function addQuestion() {
       `;
     }
   } catch (error) {
+    questionInput.disabled = false   
     // 로딩 제거
     document.getElementById('loading').remove();
     
@@ -233,7 +236,9 @@ async function addQuestion() {
 
 // 추천 질문 삽입
 function insertSuggested() {
-  const questionInput = document.getElementById('questionInput');
+  if (questionInput.disabled) {
+    return; // 입력이 비활성화된 경우 함수 종료
+  }
   const suggestedText = event.target.textContent;
   questionInput.value = suggestedText;
   questionInput.focus();
@@ -245,6 +250,11 @@ function showExportModal() {
   document.getElementById('overlay').classList.remove('hidden');
   document.getElementById('exportModal').classList.remove('hidden');
 }
+
+function cleanupAndSwitch(type) {
+    exportChat(type);                                               // 내보내기 실행
+    hideExportModal();  
+  }
 
 // 내보내기 모달 숨기기
 function hideExportModal() {
@@ -273,7 +283,7 @@ function showExportModalForCountrySwitch(button, newCountry) {
     const skipBtn = modal.querySelector(".export-skip");                // ✅ 추가
 
     // 공통 처리 함수: 내보내기 후 국가 변경
-    const cleanupAndSwitch = (type) => {
+    function cleanupAndSwitch (type) {
         exportChat(type);                                               // 내보내기 실행
         hideExportModal();                                              // 모달 닫기
         setTimeout(() => applyNewCountry(button, newCountry), 50);      // 새로운 국가로 변경
@@ -286,15 +296,12 @@ function showExportModalForCountrySwitch(button, newCountry) {
     // Skip 클릭 시: 저장 없이 바로 국가 변경
     skipBtn.onclick = () => {
         hideExportModal();
-        setTimeout(() => {
-            applyNewCountry(button, newCountry)
-        }, 50);
+        setTimeout(() => { applyNewCountry(button, newCountry)}, 50);
     };
 
     // 오버레이 클릭 시도 skip과 동일한 동작
     overlay.onclick = () => {
         hideExportModal();
-        setTimeout(() => applyNewCountry(button, newCountry), 50);
     };
     
 }
