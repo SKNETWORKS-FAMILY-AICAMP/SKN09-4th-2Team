@@ -110,7 +110,7 @@
 <br>
 
 ### ✅ 테스트 결과 보고서 (Test Report)
-![테스트 결과 보고서](https://github.com/user-attachments/assets/ea711646-9daf-475c-8010-b92c777e2ef8)
+![테스트 결과 보고서](https://github.com/user-attachments/assets/7609d5fb-5be9-45af-a7cb-876ffe39a308)
 
 <br><br>
 
