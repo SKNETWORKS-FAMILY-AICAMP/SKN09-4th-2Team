@@ -27,7 +27,7 @@ def chat_api(request):
 def call_sagemaker_endpoint(user_message, country):
     # post 요청 보내기
     res = requests.post(
-        url="http://69.30.85.229:22045/input",
+        url=f"http://{os.getenv("MODEL_URL")}/input",
         headers={
             "Content-Type": "application/json",
         },
