@@ -212,6 +212,48 @@
   {% comment %} <script>
     window.onload = insertWelcomeMessage;
   </script> {% endcomment %}
+  <form method="POST" id="refreshForm" action="{% url 'getRefresHistory' %}" style="display:none;">
+    {% csrf_token %}
+    <input type="json" id="historyInput" name="history">
+    <input type="submit">
+  </form>
   <script src="{% static 'js/script.js' %}"></script>
+  <script>
+    async function refreshChat(history){
+      if (history){
+        console.log(history)
+        const formData = new FormData(refreshForm);
+        formData.set("history", JSON.stringify(history));  // history 갱신
+      
+        fetch("/api/refresh/history", {
+          method: "POST",
+          body: formData,
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log("응답 데이터:", data);
+          // 필요 시 여기서 화면 업데이트
+        })
+        .catch(error => {
+          console.error("에러 발생:", error);
+        });
+      }
+      else {
+        try {
+          const response = await fetch('api/refresh', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+          }
+          });
+          const data = await response.json();
+          console.log(data);
+          console.log("초기화 성공");
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+    }
+  </script>
 </body>
 </html>
