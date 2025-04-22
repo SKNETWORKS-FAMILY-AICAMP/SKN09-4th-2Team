@@ -115,7 +115,7 @@ def refresh_api_history(request):
             headers={
                 "Content-Type": "application/json",
             },
-            data=history
+            data=json.dumps(json.loads(history)) 
         )
         return JsonResponse(res.json())
     except Exception as e:
