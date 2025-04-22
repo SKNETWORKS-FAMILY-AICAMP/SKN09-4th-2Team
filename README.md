@@ -7,14 +7,14 @@
 
 1. [팀 소개](#%EF%B8%8Fteam-introduce)
 2. [프로젝트 개요](#project-overview)
-3. [기술 스택](#3-기술-스택--사용한-모델-임베딩-모델-llm)
-4. [시스템 구성도](#4-시스템-아키텍처)
-5. [요구사항 정의서](#5-wbs)
-6. [화면설계서](#6-요구사항-명세서)
-7. [WBS](#7-수집한-데이터-및-전처리-요약)
-8. [테스트 계획 및 결과 보고서](#8-db-연동-구현-코드-링크만)
-9. [수행결과](#9-테스트-계획-및-결과-보고서)
-10. [한 줄 회고](#10-진행-과정-중-프로그램-개선-노력)
+3. [기술 스택](#3-기술-스택)
+4. [시스템 구성도](#4-시스템-구성도)
+5. [요구사항 정의서](#5-요구사항-정의서)
+6. [화면 설계서](#6-화면-설계서)
+7. [WBS](#7-wbs)
+8. [테스트 계획 및 결과 보고서](#8-테스트-계획-및-결과-보고서)
+9. [수행결과](#9-수행결과테스트시연-페이지)
+10. [한 줄 회고](#한-줄-회고)
 
 ---
 
@@ -29,7 +29,7 @@
 ---
 
 # 🎼Project Overview
-✅ **프로젝트 기간: 2025.04.21 - 2025. 04.22**
+✅ **프로젝트 기간: 2025.04.19 - 2025. 04.22**
 
 ## 1. 프로젝트 주제
 #### ✈️ 여행 정보 챗봇 시스템
@@ -75,18 +75,15 @@
 <a href="https://www.aitimes.com/news/articleView.html?idxno=168730">뉴스 자료</a>
 - gemma3는 뛰어난 자연어 처리 능력을 보입니다. 적은 리소스로도 높은 정확도를 제공하여, 개인 또는 소규모 팀이 활용하기에 매우 적합
 
-
-
 <br>
 
 ## 4. 시스템 구성도
-![4차_시스템 아키텍쳐](https://github.com/user-attachments/assets/90fbcd30-f044-4b44-8f84-9c3c4f5cdcf3)
-
+![시스템 아키텍쳐](https://github.com/user-attachments/assets/129fdc1e-fc30-40f5-beef-4a540a882218)
 
 <br><br>
 
 ## 5. 요구사항 정의서
-![image](https://github.com/user-attachments/assets/d8fb7f42-51d5-4942-8d54-0e758e803219)
+![4차 요구사항 명세서](https://github.com/user-attachments/assets/08405699-8b44-416f-8c4d-b5321e4ac9a4)
 
 <br><br>
 
@@ -118,8 +115,27 @@
 <br><br>
 
 ## 9. 수행결과(테스트/시연 페이지)
+
+### 트러블 슈팅
+![응답 생성 중_ 입력 비활성화](https://github.com/user-attachments/assets/a858a349-2c31-45a5-bca9-4ec555c4f15c)
+- 질문 후, 답변 생성 중 다른 동작(기능버튼 및 입력 추가) 실행 시 확인.
+
+<br>
+
+<img width="1672" alt="테스트 페이지1" src="https://github.com/user-attachments/assets/70255079-b96f-42c1-bef2-dc9e22a5a410" />
+- 국가 선택 후 다른 국가 선택했을 때, x 버튼을 누르면 기존 채팅 초기화 확인.
+
+<br>
+
+![image](https://github.com/user-attachments/assets/96826b4c-485f-4ffe-9697-2d7100fb2713)
+- 불러오기 버튼 클릭 시, json, txt 파일 외의 파일들도 업로드 가능 확인.
+
+<br><br>
+
+### 시연 페이지
 ![테스트 페이지0](https://github.com/user-attachments/assets/6a76b0a8-ce82-4561-b55a-0eb168de072a)
 <img width="1672" alt="테스트 페이지1" src="https://github.com/user-attachments/assets/42fc6180-9eda-4a5f-8444-bff025236915" />
+![image](https://github.com/user-attachments/assets/de3371ec-aa11-4149-b29a-e88563d17954)
 <img width="1278" alt="테스트 페이지2" src="https://github.com/user-attachments/assets/207e698a-157a-4d80-abe5-d67697d30fef" />
 
 
