@@ -104,28 +104,17 @@
 
 <br>
 
+### 📚 테스트 계획서 (Test Planer)
+![테스트 계획서](https://github.com/user-attachments/assets/fdb4723d-2a41-4609-a9a1-36319cd0dac3)
+
+<br>
+
 ### ✅ 테스트 결과 보고서 (Test Report)
 ![테스트 결과 보고서](https://github.com/user-attachments/assets/7609d5fb-5be9-45af-a7cb-876ffe39a308)
 
 <br><br>
 
 ## 9. 수행결과(테스트/시연 페이지)
-
-### 트러블 슈팅
-![응답 생성 중_ 입력 비활성화](https://github.com/user-attachments/assets/a858a349-2c31-45a5-bca9-4ec555c4f15c)
-- 질문 후, 답변 생성 중 다른 동작(기능버튼 및 입력 추가) 실행 시 확인.
-
-<br>
-
-<img width="1672" alt="테스트 페이지1" src="https://github.com/user-attachments/assets/70255079-b96f-42c1-bef2-dc9e22a5a410" />
-- 국가 선택 후 다른 국가 선택했을 때, x 버튼을 누르면 기존 채팅 초기화 확인.
-
-<br>
-
-![image](https://github.com/user-attachments/assets/96826b4c-485f-4ffe-9697-2d7100fb2713)
-- 불러오기 버튼 클릭 시, json, txt 파일 외의 파일들도 업로드 가능 확인.
-
-<br><br>
 
 ### 시연 페이지
 ![테스트 페이지0](https://github.com/user-attachments/assets/6a76b0a8-ce82-4561-b55a-0eb168de072a)
