@@ -82,7 +82,7 @@
 
 <br><br>
 
-## 5. 요구사항 정의서
+## 5. 요구사항 명세서
 ![4차 요구사항 명세서](https://github.com/user-attachments/assets/08405699-8b44-416f-8c4d-b5321e4ac9a4)
 
 <br><br>
