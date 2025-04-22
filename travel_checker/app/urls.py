@@ -22,4 +22,6 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("api/chat/", views.chat_api, name="chat_api"),
     path('api/question/recommend', views.getRecommendQuestion, name='getRecommendQuestion'),
+    path('api/refresh', views.refresh_api, name='getRefresh'),
+    path('api/refresh/history', views.refresh_api_history, name='getRefresHistory'),
 ]

@@ -97,3 +97,28 @@ def getRecommendQuestion(request):
         "status": "success",
         "recommend_questions": RecommendQuestion.get(country, ["여행지 추천해주세요", "맛집 추천해주세요", "해외여행 주의사항 알려주세요."])
     })
+
+def refresh_api(request):
+    try:
+        res = requests.get(
+            url=f"http://{os.getenv("MODEL_URL")}/refresh",
+        )
+        return JsonResponse(res.json())
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
+
+def refresh_api_history(request):
+    history = request.POST.get("history")
+    try:
+        res = requests.post(
+            url=f"http://{os.getenv("MODEL_URL")}/refresh",
+            headers={
+                "Content-Type": "application/json",
+            },
+            data=history
+        )
+        return JsonResponse(res.json())
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
+
+### 선택한 국가가 아닌 다른 질문을 받지 않도록
